@@ -1,7 +1,9 @@
+package JZOffer;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class JZOffer {
+public class JZ59I {
     /**
      * 面试题59 - I. 滑动窗口的最大值
      * 给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。
@@ -81,5 +83,7 @@ public class JZOffer {
         }
         return res;
     }
+
+
 
 }
