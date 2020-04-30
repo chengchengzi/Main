@@ -10,7 +10,7 @@ public class FullSort {
      * @param list ：保存全排列后的元素
      */
     public void fullSortCore(int[] arr, int n, ArrayList<int[]> list) {
-        if (n >= arr.length - 1) { //完成一次全排列
+        if (n >= arr.length - 1) { //递归出口，完成一次全排列
             int [] arrTmp = new int[arr.length];
            for(int i = 0; i < arr.length; i++){
                arrTmp[i] = arr[i];
