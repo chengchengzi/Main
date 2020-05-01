@@ -29,17 +29,8 @@ public class JZ54 {
      限制：
      1 ≤ k ≤ 二叉搜索树元素个数
      */
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
     /*
-        O(nlogn),O(n)
+        O(logn),O(n)
         按中序递归遍历序列后的值放到list中,计数到第K个输出
      */
     public int kthLargest(TreeNode root, int k) {
@@ -57,4 +48,6 @@ public class JZ54 {
             inVisit(root.right,list);
         }
     }
+
 }
+

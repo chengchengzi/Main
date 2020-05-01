@@ -17,12 +17,6 @@ public class JZ55I {
      *    15   7
      * 返回它的最大深度 3 。。
      */
-    public class TreeNode {
-       int val;
-       TreeNode left;
-       TreeNode right;
-       TreeNode(int x) { val = x; }
-    }
     /*
         递归
      */
