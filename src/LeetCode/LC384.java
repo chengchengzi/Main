@@ -47,15 +47,12 @@ public class LC384 {
         然后删除这个已经打乱过的数，重复，直到nums.length - 1.
          */
         public int[] shuffle() {
-            ArrayList<Integer> list = new ArrayList<>();
-            for(int i = 0; i < nums.length; i++){
-                list.add(nums[i]);
-            }
             Random rand = new Random();
             for(int i = 0; i < nums.length; i++){
-                int ran = rand.nextInt(list.size());
-                nums[i] = list.get(ran);
-                list.remove(ran);
+                int ran = rand.nextInt(nums.length - i) + i;
+                int tmp = nums[i];
+                nums[i] = nums[ran];
+                nums[ran] = tmp;
             }
             return nums;
         }
