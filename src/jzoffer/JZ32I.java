@@ -1,4 +1,4 @@
-package JZOffer;
+package jzoffer;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

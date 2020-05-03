@@ -1,4 +1,4 @@
-package JZOffer;
+package jzoffer;
 
 import java.util.Deque;
 import java.util.LinkedList;

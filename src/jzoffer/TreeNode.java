@@ -1,4 +1,4 @@
-package JZOffer;
+package jzoffer;
 
 public class TreeNode {
     int val;
