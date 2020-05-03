@@ -1,8 +1,7 @@
-package LeetCode;
+package leetcode;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class LC148 {
     /**
@@ -76,45 +75,54 @@ public class LC148 {
     /*
        解法2：O(NlogN),O(1)
        快慢指针找中间结点，然后归并排序
+       归并排序：
+       1、找到中间结点，断开为左右两边
+       2、分别对左右两边递归归并排序
+       3、对排序后的左右两边
     */
     public ListNode sortList3(ListNode head) {
-        if(head == null){
-            return null;
+        if(head == null || head.next == null){
+            return head;
         }
-        ListNode p = head;
-        while(p.next != null){
-            ListNode minNode = findMinNodeByBinary(p);
-            int tmp = p.val;
-            p.val = minNode.val;
-            minNode.val = tmp;
-            p = p.next;
-        }
-        return head;
-    }
-
-    public ListNode findMinNodeByBinary(ListNode p){
-        ListNode endNode = p;
-        while(endNode.next != null){
-            endNode = endNode.next;
-        }
-        return findMinNodeByBinaryCore(p,endNode);
-    }
-    public  ListNode findMinNodeByBinaryCore(ListNode beginNode, ListNode endNode){
-        if(beginNode.next == endNode){
-            return beginNode.val < endNode.val ? beginNode : endNode;
-        }
-        ListNode mid = findMiddleNode(beginNode);
-        ListNode leftMinNode = findMinNodeByBinaryCore(beginNode,mid);
-        ListNode rightMinNode = findMinNodeByBinaryCore(mid.next,endNode);
-        return leftMinNode.val < rightMinNode.val ? leftMinNode : rightMinNode;
+        ListNode mid = findMiddleNode(head);
+        ListNode leftNode = head;
+        ListNode rightNode = mid.next;
+        mid.next = null;
+        ListNode left = sortList3(leftNode);
+        ListNode right = sortList3(rightNode);
+        return merge(left,right);
     }
     public ListNode findMiddleNode(ListNode beginNode){
+        if(beginNode == null || beginNode.next == null){
+            return beginNode;
+        }
         ListNode slow = beginNode;
-        ListNode fast = beginNode;
+        ListNode fast = beginNode.next.next;
         while(fast!= null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
         }
         return slow;
+    }
+    public ListNode merge(ListNode left, ListNode right){
+        ListNode newList = new ListNode(-1);
+        ListNode pNode = newList;
+        while(left != null && right != null){
+            if(left.val <= right.val){
+                pNode.next = left;
+                left = left.next;
+            }else{
+                pNode.next = right;
+                right = right.next;
+            }
+            pNode = pNode.next;
+        }
+        if(left != null){
+            pNode.next = left;
+        }
+        if(right != null){
+            pNode.next = right;
+        }
+        return newList.next;
     }
 }

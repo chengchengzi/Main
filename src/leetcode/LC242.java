@@ -1,6 +1,5 @@
-package LeetCode;
+package leetcode;
 
-import javax.xml.stream.events.Characters;
 import java.util.Arrays;
 
 public class LC242{
