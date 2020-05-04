@@ -85,19 +85,19 @@ public class LC148 {
             return head;
         }
         ListNode mid = findMiddleNode(head);
-        ListNode leftNode = head;
-        ListNode rightNode = mid.next;
+        ListNode leftHead = head;
+        ListNode rightHead = mid.next;
         mid.next = null;
-        ListNode left = sortList3(leftNode);
-        ListNode right = sortList3(rightNode);
+        ListNode left = sortList3(leftHead);
+        ListNode right = sortList3(rightHead);
         return merge(left,right);
     }
-    public ListNode findMiddleNode(ListNode beginNode){
-        if(beginNode == null || beginNode.next == null){
-            return beginNode;
+    public ListNode findMiddleNode(ListNode head){
+        if(head == null || head.next == null){
+            return head;
         }
-        ListNode slow = beginNode;
-        ListNode fast = beginNode.next.next;
+        ListNode slow = head;
+        ListNode fast = head.next.next;
         while(fast!= null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
